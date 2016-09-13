@@ -132,13 +132,11 @@ public class GradientView: UIView {
 	// MARK: - UIView
 
 	override public func drawRect(rect: CGRect) {
-
+		guard let context = UIGraphicsGetCurrentContext() else { return }
 		let size = bounds.size
 
 		// Gradient
-		if let gradient = gradient,
-        	let context = UIGraphicsGetCurrentContext() 
-        {
+		if let gradient = gradient {
 			let options: CGGradientDrawingOptions = [.DrawsAfterEndLocation]
 
 			if mode == .Linear {
